@@ -24,10 +24,12 @@ RUN apt-get install -y --fix-missing \
     python-protobuf\
     software-properties-common \
     zip \
+    python3-pip \
     && apt-get clean && rm -rf /tmp/* /var/tmp/*
 
 RUN cd ~ && \
     mkdir -p dlib && \
     git clone https://github.com/davisking/dlib.git dlib/ && \
     cd  dlib/ && \
-    python setup.py install --yes USE_AVX_INSTRUCTIONS
+    python setup.py install --yes USE_AVX_INSTRUCTIONS && \
+    python3 setup.py install --yes USE_AVX_INSTRUCTIONS
